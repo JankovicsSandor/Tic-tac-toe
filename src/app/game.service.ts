@@ -1,10 +1,25 @@
 import { Injectable } from '@angular/core';
-
 @Injectable()
 export class GameService {
+
   changePlayer(square: any) {
     this.board[square.id].state = square.state;
-    console.log(this.board);
+    if(this.activePlayer == "X"){
+      this.activePlayer="O"
+    }else{
+      this.activePlayer="X"
+    }
+    this.checkBoard();
+  }
+
+
+  checkBoard() {
+    if(this.board[0].state== "X" && this.board[1].state=="X" && this.board[2].state=="X"){
+      this.winner=true;
+      console.log("WIN");
+    }else{
+      //
+    }
   }
 
   public board = <any>[];
